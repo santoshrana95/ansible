@@ -1,0 +1,13 @@
+---
+- hosts: webservers
+  tasks:
+    - name: Copy application code
+      copy:
+        src: /path/to/repo/app/
+        dest: /var/www/html/
+
+    - name: Restart web server
+      service:
+        name: httpd
+        state: restarted
+
