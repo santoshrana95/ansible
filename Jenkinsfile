@@ -8,7 +8,7 @@ pipeline {
         }
         stage('Run Ansible Playbook') {
             steps {
-                ansiblePlaybook credentialsId: 'ansible-ssh-key',
+                git credentialsId: 'github-token', url: 'https://github.com/santoshrana95/ansible.git',
                     inventory: 'inventory/hosts',
                     playbook: 'playbooks/deploy.yml'
             }
