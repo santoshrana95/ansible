@@ -14,9 +14,8 @@ pipeline {
             steps {
                 ansiblePlaybook(
                     playbook: 'playbooks/deploy.yml',
-                    inventory: 'inventory/hosts',
+                    extras: '-i inventory/hosts --private-key /var/lib/jenkins/workspace/Ansible/ssh7532655438377794242.key',
                     credentialsId: 'ec2-user'
-                    extras: '--private-key /var/lib/jenkins/workspace/Ansible/ssh7532655438377794242.key'
                 )
             }
         }
