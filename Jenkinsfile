@@ -1,18 +1,23 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/santoshrana95/ansible.git'
+                git branch: 'main',
+                    url: 'https://github.com/santoshrana95/ansible.git',
+                    credentialsId: 'ansible-ssh-key'
             }
         }
+
         stage('Run Ansible Playbook') {
             steps {
-                git credentialsId: 'github-token', url: 'https://github.com/santoshrana95/ansible.git',
+                ansiblePlaybook(
+                    playbook: 'playbooks/deploy.yml',
                     inventory: 'inventory/hosts',
-                    playbook: 'playbooks/deploy.yml'
+                    credentialsId: 'ansible-ssh-key'
+                )
             }
         }
     }
 }
-
