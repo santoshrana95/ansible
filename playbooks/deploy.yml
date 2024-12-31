@@ -1,9 +1,15 @@
 ---
-- hosts: webservers
+- hosts: app
+  become: true
   tasks:
+    - name: Install ngnix
+      yum:
+        name: httpd
+        state: present
+
     - name: Copy application code
       copy:
-        src: /path/to/repo/app/
+        src: /root/ngnix/ansible/app
         dest: /var/www/html/
 
     - name: Restart web server
