@@ -9,7 +9,7 @@
 
     - name: Copy application code
       copy:
-        src: /root/ngnix/ansible/app
+        src: /opt/jenkins/workspace/sample build job/app
         dest: /var/www/html/
 
     - name: Restart web server
