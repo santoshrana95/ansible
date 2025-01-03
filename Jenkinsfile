@@ -14,7 +14,7 @@ pipeline {
             steps {
                 ansiblePlaybook(
                     playbook: 'playbooks/deploy.yml',
-                    extras: '-i inventory/hosts --private-key /root/.ssh/id_rsa.key -u ec2-user -vvv'
+                    extras: '-i inventory/hosts --private-key /opt/jenkins/workspace/sample\\ build\\ job/id_rsa.key -u ec2-user -vvv'
                 )
             }
         }
