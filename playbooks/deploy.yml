@@ -12,8 +12,3 @@
         src: /opt/jenkins/workspace/sample build job/app
         dest: /var/www/html/
 
-    - name: Restart web server
-      service:
-        name: httpd
-        state: restarted
-
